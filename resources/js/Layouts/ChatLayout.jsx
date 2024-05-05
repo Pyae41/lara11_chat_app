@@ -111,7 +111,7 @@ const ChatLayout = ({ children }) => {
                 </div>
                 <div className="p-3">
                     <TextInput
-                        onKeyUp={onSearch}
+                        onKeyUp={() => onSearch}
                         placeholder="Search Users and Groups"
                         className="w-full"
                     />
