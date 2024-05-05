@@ -58,7 +58,7 @@ class User extends Authenticatable
         $userId = $user->id;
         $query = self::select(['users.*', 'messages.message as last_message', 'messages.created_at as last_message_date'])
             ->where('users.id', '!=', $userId)
-            ->when(!$user->is_admin, fn($query) => $query->whereNull('user.blocked_at'))
+            ->when(!$user->is_admin, fn($query) => $query->whereNull('users.blocked_at'))
             ->leftJoin('conversations', function ($join) use ($userId) {
                 $join->on('conversations.user_id1', '=', 'users.id')
                     ->where('conversations.user_id2', '=', $userId)
