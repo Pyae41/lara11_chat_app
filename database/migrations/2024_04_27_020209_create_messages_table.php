@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('sender_id')
                 ->constrained('users');
 
-            $table->foreignId('reciever_id')->nullable()
+            $table->foreignId('receiver_id')->nullable()
                 ->constrained('users');
 
             $table->foreignId('group_id')->nullable()
