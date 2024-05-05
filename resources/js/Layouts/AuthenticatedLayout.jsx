@@ -13,7 +13,7 @@ export default function Authenticated({ header, children }) {
         useState(false);
 
     useEffect(() => {
-        console.log("authenticated layout mounted");
+        // console.log("authenticated layout mounted");
     }, []);
 
     return (

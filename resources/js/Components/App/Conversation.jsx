@@ -6,28 +6,28 @@ import { useState } from "react";
 
 const Conversation = ({
     conversation,
-    seletecedConversation = null,
+    selectedConversation = null,
     online = null,
 }) => {
     const page = usePage();
     const currentUser = page.props.auth.user;
-    const [classes, setClasses] = useState("border-transparent");
+    let classes = "border-transparent";
 
-    if (seletecedConversation) {
+    if (selectedConversation) {
         if (
-            !seletecedConversation.is_group &&
+            !selectedConversation.is_group &&
             !conversation.is_group &&
-            seletecedConversation.id == conversation.id
+            selectedConversation.id == conversation.id
         ) {
-            setClasses("border-blue-500 bg-black/20");
+            classes = "border-blue-500 bg-black/20";
         }
 
         if (
-            seletecedConversation.is_group &&
+            selectedConversation.is_group &&
             conversation.is_group &&
-            seletecedConversation.id == conversation.id
+            selectedConversation.id == conversation.id
         ) {
-            setClasses("border-blue-500 bg-black/20");
+            classes = "border-blue-500 bg-black/20";
         }
     }
 
@@ -40,7 +40,7 @@ const Conversation = ({
             }
             preserveState
             className={`conversation flex item-center gap-2 p-2 text-black transition-all
-                cursor-pointer border-l-4 hover:bg-gray-200 ${
+                cursor-pointer border-l-4 hover:bg-gray-200 ${classes}  ${
                     conversation.is_user && currentUser.is_admin
                         ? "pr-2"
                         : "pr-4"
